@@ -113,6 +113,10 @@ button:hover { background: #2563eb; }
 .delete-note:hover { background: #dc2626; }
 hr { margin: 1rem 0; }
 
+footer {
+ text-align: center; margin-top: 2rem;
+ font-size: 0.7rem; color: #5b6e8c;
+}
 </style>
 </head>
 <body>
@@ -129,6 +133,10 @@ hr { margin: 1rem 0; }
  <div class="form-group">
  <label>📌 Title *</label>
  <input type="text" id="noteTitle" placeholder="e.g., DOM practice">
+
+<footer>
+    BOM: confirm() on delete | alert() on empty title | resize event updates window size.
+</footer>
  </div>
  <div class="form-group">
  <label>📝 Content</label>
@@ -259,7 +267,7 @@ function deleteNoteById(id) {
  }
 }
 
-unction clearAllNotes() {
+function clearAllNotes() {
  if (notes.length === 0) {
  alert("📭 No notes to clear.");
  return;

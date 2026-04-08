@@ -119,19 +119,19 @@ hr { margin: 1rem 0; }
 
 <div class="container">
 <header>
- <h1>📝📝 Quick Notes Dashboard</h1>
+ <h1>📝 Quick Notes Dashboard</h1>
  <p>Practice <strong>DOM manipulation</strong> + <strong>BOM</strong>.</p>
- <div class="badge">🎯🎯 Lab: BOM + DOM | pure JS</div>
+ <div class="badge">🎯 Lab: BOM + DOM | pure JS</div>
 </header>
 <div class="grid">
 <div class="card" id="left-panel">
  <h2>✏ Add a note</h2>
  <div class="form-group">
- <label>📌📌 Title *</label>
+ <label>📌 Title *</label>
  <input type="text" id="noteTitle" placeholder="e.g., DOM practice">
  </div>
  <div class="form-group">
- <label>📝📝 Content</label>
+ <label>📝 Content</label>
  <textarea id="noteContent" rows="2"
  placeholder="Write something..."></textarea>
  </div>
@@ -140,27 +140,27 @@ hr { margin: 1rem 0; }
 </div>
  
  <div class="card" id="right-panel">
- <h2>📋📋 Your notes</h2>
+ <h2>📋 Your notes</h2>
  <div id="notesContainer" class="notes-list">
  <div style="color:#94a3b8;text-align:center;">
  ✨ No notes yet. Create one!
  </div>
  </div>
  <hr>
- <h2 style="font-size:1rem;">🌐🌐 Browser info (BOM)</h2>
+ <h2 style="font-size:1rem;">🌐 Browser info (BOM)</h2>
  <div class="info-panel" id="bomPanel">
  <div class="info-row">
- <span>🖥🖥 Window size:</span>
+ <span>🖥 Window size:</span>
  <span id="windowSize">-- x --</span>
  </div>
  <div class="info-row">
- <span>📱📱 User Agent:</span>
+ <span>📱 User Agent:</span>
  <span id="userAgent">--</span>
  </div>
  </div>
  <button id="clearAllBtn"
  style="background:#64748b;margin-top:0.8rem;">
- 🗑🗑 Clear all notes
+ 🗑 Clear all notes
  </button>
 </div>
 </div>
@@ -177,7 +177,7 @@ hr { margin: 1rem 0; }
         const clearAllBtn = document.getElementById("clearAllBtn");
         const noteCounterSpan = document.getElementById("noteCounter");
         const windowSizeSpan = document.getElementById("windowSize");
-        const userAgentSpan = document.getElementById("userAgent")
+        const userAgentSpan = document.getElementById("userAgent");
 
         function updateCounter() {
         const count = notes.length;
@@ -193,7 +193,7 @@ hr { margin: 1rem 0; }
  // ── empty-state message ──
  if (notes.length === 0) {
  const emptyMsg = document.createElement("div");
- emptyMsg.textContent = "📭📭 No notes yet. Add your first note!";
+ emptyMsg.textContent = "📭 No notes yet. Add your first note!";
  emptyMsg.style.color = "#94a3b8";
  emptyMsg.style.textAlign = "center";
  emptyMsg.style.padding = "1rem";
@@ -201,7 +201,7 @@ hr { margin: 1rem 0; }
  updateCounter();
  return;
  }
- 
+
  notes.forEach(note => {
  // wrapper div
  const noteDiv = document.createElement("div");
@@ -211,7 +211,25 @@ hr { margin: 1rem 0; }
  const titleDiv = document.createElement("div");
  titleDiv.classList.add("note-title");
  const titleSpan = document.createElement("span");
- titleSpan.textCon
+ titleSpan.textContent = note.title;
+
+ const deleteBtn = document.createElement("button");
+ deleteBtn.textContent = "🗑 Delete";
+ deleteBtn.classList.add("delete-note");
+ deleteBtn.setAttribute("data-action", "delete");
+ deleteBtn.setAttribute("data-id", note.id);
+ titleDiv.appendChild(titleSpan);
+ titleDiv.appendChild(deleteBtn);
+ // content paragraph
+ const contentP = document.createElement("p");
+ contentP.classList.add("note-content");
+ contentP.textContent = note.content || "(no additional content)";
+ noteDiv.appendChild(titleDiv);
+ noteDiv.appendChild(contentP);
+ notesContainer.appendChild(noteDiv);
+ });
+ updateCounter();
+} // end renderNotes
     </script>
     
 </body>

@@ -201,6 +201,17 @@ hr { margin: 1rem 0; }
  updateCounter();
  return;
  }
+ 
+ notes.forEach(note => {
+ // wrapper div
+ const noteDiv = document.createElement("div");
+ noteDiv.classList.add("note-item");
+ noteDiv.setAttribute("data-id", note.id);
+ // title row
+ const titleDiv = document.createElement("div");
+ titleDiv.classList.add("note-title");
+ const titleSpan = document.createElement("span");
+ titleSpan.textCon
     </script>
     
 </body>
